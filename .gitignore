@@ -1,0 +1,6 @@
+ansible.cfg
+/artifacts
+ansible-navigator.log
+.password
+patch_ee/context/
+.vscode
