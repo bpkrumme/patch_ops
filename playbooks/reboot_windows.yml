@@ -1,0 +1,12 @@
+---
+- name: Reboot a Windows system
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Reboot a Windows system
+      ansible.windows.win_reboot:
+        reboot_timeout: 3600
+        msg: "{{ patch_utils_reboot_msg | default(omit) }}"
+        pre_reboot_delay: 60
+        post_reboot_delay: 60

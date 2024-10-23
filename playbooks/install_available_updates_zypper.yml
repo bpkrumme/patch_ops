@@ -1,0 +1,11 @@
+---
+- name: Install all available updates with zypper
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install available updates
+      community.general.zypper:
+        name: "*"
+        state: latest
+        update_cache: true

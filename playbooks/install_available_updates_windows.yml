@@ -1,0 +1,21 @@
+---
+- name: Install all windows updates without rebooting
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install windows updates
+      ansible.windows.win_updates:
+        category_names:
+          - Application
+          - Connectors
+          - CriticalUpdates
+          - DefinitionUpdates
+          - DeveloperKits
+          - FeaturePacks
+          - Guidance
+          - SecurityUpdates
+          - ServicePacks
+          - Tools
+          - UpdateRollups
+          - Updates
+        log_path: C:\ansible_win_updates.txt

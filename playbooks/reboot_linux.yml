@@ -1,0 +1,12 @@
+---
+- name: Reboot a Linux system
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Reboot a Linux system
+      ansible.builtin.reboot:
+        reboot_timeout: 1200
+        msg: "{{ patch_utils_reboot_msg | default(omit) }}"
+        pre_reboot_delay: 60
+        post_reboot_delay: 60

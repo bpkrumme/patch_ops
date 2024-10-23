@@ -1,0 +1,11 @@
+---
+- name: Install all available updates with apt
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Install available updates
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+        update_cache: true
