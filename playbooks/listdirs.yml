@@ -1,0 +1,19 @@
+---
+- name: List directory contents
+  hosts: localhost
+  become: false
+  tasks:
+    - name: List directory contents
+      ansible.builtin.find:
+        paths:
+          - /etc/pki
+          - /usr/share/pki
+        recurse: true
+        file_type: file
+      register: path_contents
+
+    - name: Show directory contents
+      ansible.builtin.debug:
+        msg: "{{ item.path }}"
+      loop: "{{ path_contents.files }}"
+...
