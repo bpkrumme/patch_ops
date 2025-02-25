@@ -6,7 +6,7 @@
     - name: List directory contents
       ansible.builtin.find:
         paths:
-          - /etc/pki
+          - /etc/pki/ca-trust
           - /usr/share/pki
         recurse: true
         file_type: file
