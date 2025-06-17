@@ -9,6 +9,7 @@
         name: "*"
         state: latest
         update_cache: true
+        update_only: true
       notify: Reboot if Updated
   handlers:
     - name: Reboot if Updated

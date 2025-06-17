@@ -1,0 +1,30 @@
+---
+- name: Install all windows updates without rebooting
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install windows updates
+      ansible.windows.win_updates:
+        category_names:
+          - Application
+          - Connectors
+          - CriticalUpdates #default
+          - DefinitionUpdates
+          - DeveloperKits
+          - FeaturePacks
+          - Guidance
+          - SecurityUpdates #default
+          - ServicePacks
+          - Tools
+          - UpdateRollups #default
+          - Updates
+          - Upgrades
+        log_path: C:\ansible_win_updates.txt
+      notify: Reboot a Windows system
+  handlers:
+    - name: Reboot a Windows system
+      ansible.windows.win_reboot:
+        reboot_timeout: 3600
+        msg: "{{ patch_utils_reboot_msg | default(omit) }}"
+        post_reboot_delay: 60
+...
