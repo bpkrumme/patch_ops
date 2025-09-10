@@ -1,6 +1,6 @@
 ---
 - name: Install all available updates with dnf
-  hosts: "{{ vm_name | default('all')"
+  hosts: "{{ vm_name | default('all') }}"
   gather_facts: true
   become: true
   tasks:
